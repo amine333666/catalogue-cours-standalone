@@ -1,6 +1,10 @@
 import { Component, Output, EventEmitter  } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FiltreCoursPipe } from '../../pipes/filtre-cours-pipe';
+import { TriCoursPipe } from '../../pipes/tri-cours-pipe';
+import { UpperCasePipe } from '@angular/common';
 @Component({
-  imports: [],
+  imports: [FormsModule, FiltreCoursPipe, TriCoursPipe, UpperCasePipe],
   selector: 'app-liste-cours',
   styleUrl: './liste-cours.css',
   templateUrl: './liste-cours.html',
@@ -8,6 +12,8 @@ import { Component, Output, EventEmitter  } from '@angular/core';
 
 
 export class ListeCoursComponent { 
+   recherche = ''; 
+  tri: 'asc' | 'desc' = 'asc'; 
   @Output() coursSelectionne = new EventEmitter<Cours>(); 
   coursActif: Cours | null = null; 
 
